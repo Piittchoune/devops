@@ -1,4 +1,7 @@
 Vagrant.configure("2") do |config|
+
+  config.vagrant.plugins = ["vagrant-libvirt"]
+  
   config.vm.provider :libvirt do |lb|
     lb.memory = 1024
     lb.cpus = 2

@@ -2,6 +2,14 @@
 
 ## Getting started with Ansible fundamentals and basics concepts
 
+### Presentaion
+
+| VM     | IP            |
+|--------|---------------|
+| alma8  | 192.168.33.11 |
+| centos | 192.168.33.12 |
+| ubunu  | 192.168.33.13 |
+
 ### Set up the lab
 
 ```bash
@@ -234,16 +242,43 @@ Remember that ansible will always read the inventory that is specified in the an
 
 ### Completing The Environment
 
-On alma8 generate ssh key for using Ansible as a controller node:
+First generate ssh key on alma8 that will be our Ansible Controller:
 
 ```bash
-ssh-keygen -b 2048 -t rsa -f /home/vagrant/.ssh/id_rsa -q -N ""
+vagrant ssh alma8
+ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
 ```
 
 And copy it on each managed node:
 
 ```bash
+ssh-copy-id vagrant@192.168.33.12
+ssh-copy-id vagrant@192.168.33.13
 ```
+
+> password: vagrant
+
+Now test the good implementation of the ssh pubkey on managed node:
+
+```bash
+ansible all -m ping
+```
+
+Create a new playbook and run it:
+
+```yaml
+---
+- name: Simple Play 2
+  hosts: all
+  tasks:
+    - name: Ping me
+      ping:
+    - name: Print os
+      debug:
+        msg: "My distribution is {{ ansible_distribution }}" # This is a jinja variable
+```
+
+So in this way we understood that ansible use the pubkey authenication mecanism to manage node, the prerequisite tasks its to generate ssh key first and then send the pubkey for the remote user.
 
 ### Main Ansible commands
 

@@ -25,7 +25,7 @@ sudo systemctl enable --now libvirtd
 echo "-------------------------------"
 echo "[OK] - Installation of Vagrant Libvirt"
 
-# Initial Project Creation # 
+# Initial Project Creation #
 echo "Testing the Vagrant Libvirt installation"
 echo "-------------------------------"
 
@@ -33,7 +33,7 @@ vagrant init fedora/38-cloud-base
 vagrant up --provider=libvirt
 vagrant status
 result=$?
-if [ $result -eq 0 ] ; then 
+if [ $result -eq 0 ]; then
     echo "-------------------------------"
     echo "[OK] - Testing the Vagrant Libvirt installation"
     vagrant destroy -f

@@ -22,7 +22,7 @@ sudo dnf -y install vagrant
 echo "-------------------------------"
 echo "[OK] - Installation of Vagrant Virtualbox"
 
-# Initial Project Creation # 
+# Initial Project Creation #
 echo "Testing the Vagrant Virtualbox installation"
 echo "-------------------------------"
 
@@ -30,7 +30,7 @@ vagrant init fedora/38-cloud-base
 vagrant up
 vagrant status
 result=$?
-if [ $result -eq 0 ] ; then 
+if [ $result -eq 0 ] ; then
     echo "-------------------------------"
     echo "[OK] - Testing the Vagrant Virtualbox installation"
     vagrant destroy -f

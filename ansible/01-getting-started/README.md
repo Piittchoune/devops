@@ -1,4 +1,4 @@
-# 00-getting-started
+# 01-getting-started
 
 ## Getting started with Ansible fundamentals and basics concepts
 

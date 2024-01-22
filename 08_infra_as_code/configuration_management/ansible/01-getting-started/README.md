@@ -2,13 +2,20 @@
 
 ## Getting started with Ansible fundamentals and basics concepts
 
-### Presentaion
+### Environement
 
 | VM     | IP            |
 |--------|---------------|
 | alma8  | 192.168.33.11 |
 | centos | 192.168.33.12 |
 | ubunu  | 192.168.33.13 |
+
+### Requirements
+
+- Internet connection
+- Vagrant
+- Vagrant >= 1.9
+- Vagrant plugins [vagrant-libvirt (0.12.2, global)]
 
 ### Set up the lab
 
@@ -18,7 +25,7 @@ vagrant up
 
 ### Installing Ansible
 
-* debian based distro with apt
+- debian based distro with apt
 
 ``` bash
 vagrant ssh ubuntu
@@ -29,7 +36,7 @@ sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
 sudo apt install ansible
 ```
 
-* rhel based distro with pip
+- rhel based distro with pip
 
 ``` bash
 vagrant ssh centos
@@ -39,7 +46,7 @@ sudo pip3 install -U pip --upgrade
 pip3 install ansible --user
 ```
 
-* rhel based distro with dnf
+- rhel based distro with dnf
 
 ``` bash
 vagrant ssh alma8
@@ -148,10 +155,10 @@ Return a specific fact in a playbook:
 
 By default when you run Ad-Hoc command or playbook without specify an inventory file, Ansible will search in different place an inventory file with the following hierarchy:
 
-* In the environnment variable **ANSIBLE_CONFIG**
-* **$CWD/ansible.cfg**
-* **$HOME/.ansible.cfg**
-* **/etc/ansible/ansible.cfg**
+- In the environnment variable **ANSIBLE_CONFIG**
+- **$CWD/ansible.cfg**
+- **$HOME/.ansible.cfg**
+- **/etc/ansible/ansible.cfg**
 
 On alma8 create a file *$HOME/.ansible.cfg* with this content:
 

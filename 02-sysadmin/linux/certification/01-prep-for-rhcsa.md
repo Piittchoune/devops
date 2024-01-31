@@ -1,28 +1,24 @@
----
-
----
-
 # ****RHEL 8: Using Essential Tools****
 
 ## Introduction Red Hat and enterprise Linux
 
+:warning: All header tagged with (📝) are important to learn for passing the RHCSA cert ! :warning:
+
 ### Red Hat Enterprise Linux
 
-Red Hat Family : 
+Red Hat Family :
 
 - RHEL - Free but require support subscription for updates
 - CentOS - Red Hat rebuild with community support and updates. Project ends December 2021
 - Alma Linux
 - Rocky Linux
 - Fedora ❤️
-    
-    
 
 ### 📝 Understanding Linux commands
 
 Running commands:
 
-Linux is case sensitive, commands, options and arguments need to be typed in the correct case. 
+Linux is case sensitive, commands, options and arguments need to be typed in the correct case.
 
 Hidden file begin with a dot.
 
@@ -32,9 +28,9 @@ ls -a # command with an option to list all file
 ls -l /etc # command with the option for a long listing (metadata) and an argument
 ```
 
-Gaining help: 
+Gaining help:
 
-Some command have simple help options whist most have manual or man pages. This include the manual page for the command man itself. Other documentation can exist below the /usr/share/doc directory. 
+Some command have simple help options whist most have manual or man pages. This include the manual page for the command man itself. Other documentation can exist below the /usr/share/doc directory.
 
 ```bash
 ip addr help 
@@ -43,7 +39,7 @@ man man  # update man with => sudo mandb
 ls /usr/share/doc # Contains HTLM and PDF documentation of installed software 
 ```
 
-Once RHEL in installed : 
+Once RHEL in installed :
 
 - Login to the console
 - Check IP address
@@ -97,27 +93,27 @@ STDOUT and STDERR
 
 Output from a command without errors will be sent to STDOUT
 
-Error output from a command will be sent to STDERR 
+Error output from a command will be sent to STDERR
 
 One command may produce output with some errors along with success
 
-Example: 
+Example:
 
-STDOUT 
+STDOUT
 
 ```bash
 ls -l /etc/hosts
 -rw-r--r-- 1 root root 434 Nov 21 09:59 /etc/hosts
 ```
 
-STDERR 
+STDERR
 
 ```bash
 ls -l /etc/Hosts
 ls: cannot access '/etc/Hosts': No such file or directory
 ```
 
-Redirecting STDOUT 
+Redirecting STDOUT
 
 Non-Error output can be redirected using the greater than operator and directed to a file. Use > to overwrite and >> to append.
 
@@ -130,7 +126,7 @@ ls -l /etc/hosts /etc/Hosts >> output.file
 ls: cannot access '/etc/Hosts': No such file or directory
 ```
 
-Redirecting STDERR 
+Redirecting STDERR
 
 Error output can be redirected using 2>. Again, the use of 2>> can be used to append rather than overwrite.
 
@@ -138,9 +134,9 @@ Error output can be redirected using 2>. Again, the use of 2>> can be used to ap
 ls -l /etc/Hosts 2> error.file
 ```
 
-Redirecting STDERR and STDOUT 
+Redirecting STDERR and STDOUT
 
-Output can be configured to a single file if required. Here, all output is redirected to the file called log. 
+Output can be configured to a single file if required. Here, all output is redirected to the file called log.
 
 ```bash
 ls -l /etc/hosts /etc/Hosts &> log  # In the same file 
@@ -156,7 +152,7 @@ ls -l /etc/hosts /etc/Hosts > output.file  2>&1
 
 Creating text documents using HEREDOCS
 
-Multiline text files can be created from the command line of scripts using HEREDOCS. Any keyword can be used that will not appear in the file text. 
+Multiline text files can be created from the command line of scripts using HEREDOCS. Any keyword can be used that will not appear in the file text.
 
 ```bash
 cat > story.txt <<END  # END or anything else 
@@ -187,9 +183,7 @@ echo "1.0.0.1 cloudflare" | sudo tee -a /etc/hosts
 # tee append the output of the echo command in the file /etc/hosts
 ```
 
- 
-
-Allow to print it in the console and log it into a file 
+Allow to print it in the console and log it into a file
 
 ```bash
 
@@ -219,7 +213,7 @@ sudo dnf update
 sudo dnf install -y vim nano bash-completion 
 ```
 
-Editing with vim : 
+Editing with vim :
 
 - Normal Mode - when entering vim we are in normal or command mode
 - Editing Mode - to edit an open text file, we need to use the command **i** or **a** to insert or append
@@ -240,11 +234,9 @@ cd   # Return to home directory
 cd - # Retrun to the previously directory 
 ```
 
-Deleting Directories 
+Deleting Directories
 
-An empty directory can be removed with rmdir command. More often a directory can be removed with the rm -rf command.  Always ensure you working as the correct user account and you have entered the correct directory to remove. 
-
- 
+An empty directory can be removed with rmdir command. More often a directory can be removed with the rm -rf command.  Always ensure you working as the correct user account and you have entered the correct directory to remove.
 
 ```bash
 rmdir dir1
@@ -262,19 +254,19 @@ To make a copy of a file we use cp. You will need write perm to where you copy i
 
 - Move
 
-To move or rename a file we use the command mv. Here, you will need write to both the source and destination. 
+To move or rename a file we use the command mv. Here, you will need write to both the source and destination.
 
 - Remove
 
 The deletes files we can use the command rm. You will need write perm to the source directory to delete a file from it.
 
-**Targeting File :** 
+**Targeting File :**
 
 (*) The asterisk refers to any character and any number of those characters. Used on its own it refers to all files or **files*** would be all files starting with files.
 
-(?) The questions mark refers to any characters but a single instance. Used on its own it would include files with just one character in their name. The name **files?** would include files starting with files but having a total of exactly 6 characters. 
+(?) The questions mark refers to any characters but a single instance. Used on its own it would include files with just one character in their name. The name **files?** would include files starting with files but having a total of exactly 6 characters.
 
-********************Anchoring******************** 
+********************Anchoring********************
 
 The **caret ^**and the **dollar sign $** are meta-characters that respectively match the empty string at the beginning and end of a line.
 
@@ -306,9 +298,9 @@ wc -l /etc/services
 less /etc/services
 ```
 
-Using grep to Search text files 
+Using grep to Search text files
 
-Often we need to check values for which is best served by searching files using the command grep. Regular expressions meta-characters can help our searching. Using **^** we can look for lines starting with given text. 
+Often we need to check values for which is best served by searching files using the command grep. Regular expressions meta-characters can help our searching. Using **^** we can look for lines starting with given text.
 
 ```bash
 sudo grep Password /etc/ssh/sshd_config
@@ -351,7 +343,7 @@ In general Linux file system will support permissions, however non-native Linux 
 
 Additional permissions can be added via ACLs. In the default XFS file system of RHEL 8 this is in-built. In older EXT3 based file system the mount option ACneed to be added. In this module we look only at the standard file mode or basic permissions.
 
-Listing File Permissions 
+Listing File Permissions
 Listing file with the -l option we can see more meta data from the file. This includes the file type, permissions, link count, ownership, file size and the last modified time. The command stat can also be used to view this data.
 
 ```bash
@@ -441,7 +433,7 @@ chmod -v 666 error.file
 mode of 'error.file' changed from 0644 (rw-r--r--) to 0666 (rw-rw-rw-)
 ```
 
-Advanced Symbolic Permissions 
+Advanced Symbolic Permissions
 Often, it is incorrectly thought that symbolic permissions are simpler and only used when you start your administration career. This is far from the case as we see with -X. The upper-case X is used to set execute only of directories of files where execute is already set in one or more objects.
 
 ```bash
@@ -501,7 +493,7 @@ sudo chgrp root f1
 
 ### Managing Links in Linux
 
-Hard Link Count 
+Hard Link Count
 The hard link count of a new directory will always be 2. The name of the directory ****************new_dir/.**************** is linked to the same metadata. The option -i can be used to show the inode or directory entry. Creating subdirectories will increase the hard link-count. In the example the extra link is **********new_dir/dir1/..********** which is the same entry as new_dir and new_dir/.
 
 ```bash
@@ -518,7 +510,7 @@ mkdir new_dir/dir1 ; ls -ld new_dir
 drwxrwx---. 3 ---- new_dir/
 ```
 
-Symbolic or soft links 
+Symbolic or soft links
 Hard links are just extra names linked to the same metadata. On the other hand, soft links are a special file type that links to the destination file. This is a completely new file that is used as a link to the target. The file type show as a l for link.
 
 ```bash
@@ -530,7 +522,7 @@ lrwxrwxrwx 1 kportron kportron 13 Nov 21 23:15 services -> /etc/services
 
 ### Switching User and Groups IDs
 
-Adding Users to Groups 
+Adding Users to Groups
 
 User and group management is a topic for another course, but if we want to observe the behavior of group changes, we can look at simple example now. Adding a user to a group required the user to logout and in again.
 
@@ -580,7 +572,7 @@ su user
 
 ## 📝 Archiving Files in Linux
 
-Creating tar files 
+Creating tar files
 
 ```bash
 sudo du -sh /etc
@@ -605,7 +597,7 @@ tar -xf file.tar # Extract tar file
 tar -xzf file.tar.gz # Extract compressed tar file
 ```
 
-Type of Compression 
+Type of Compression
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/417e1dc4-3e7b-4043-8e07-a9f48c7b1a53/Untitled.png)
 
@@ -617,12 +609,12 @@ Type of Compression
 
 ### What are shell scripts ?
 
-1. shell scripts are in the same format as command line 
-2. logic can work on the exit status of the previous command 
-3. a value of zero is success anything else is a failure 
-4. from the command line we can read the variable $? to determinate the last exit code 
+1. shell scripts are in the same format as command line
+2. logic can work on the exit status of the previous command
+3. a value of zero is success anything else is a failure
+4. from the command line we can read the variable $? to determinate the last exit code
 
-Creating scripts in the cli 
+Creating scripts in the cli
 
 ```bash
 # Example 1
@@ -653,7 +645,7 @@ ls /etc/Hosts ; echo $?
 2
 ```
 
-Simple logic 
+Simple logic
 
 - && - The second command only runs if the first command succeeds: mkdir dir && cd dir
 - || - The second command only runs if the first command failed : cd dir || mkdir dir
@@ -681,7 +673,7 @@ my2.sh: Bourne-Again shell script, ASCII text executable
 
 ### Working with PATH and Execute permissions
 
-Execute script : 
+Execute script :
 
 - Open: We can run scripts with the bash command: bash my.sh
 - Execute permission: To run directly we must set the x bit: chmod +x
@@ -695,13 +687,13 @@ $? = Exit status
 
 $! = Last argument
 
-$0 = Program name 
+$0 = Program name
 
 $(basename $0) = Program name
 
-$1 = First argument 
+$1 = First argument
 
-$# / $* / $@ = The argument count All arguments as a string or an array ($# count of total arg, $* all arg as a text string, all arg as a true array)
+$# / $*/ $@ = The argument count All arguments as a string or an array ($# count of total arg, $* all arg as a text string, all arg as a true array)
 
 ## Automating the User Creation Process
 
@@ -712,8 +704,8 @@ The username is not an option to useradd, it is required. We should enforce a sc
 ```bash
 #!/bin/bash
 if [ "$#" -lt 1 ] ; then
-	echo "usage: $(basename $0) <username>"
-	exit 1
+ echo "usage: $(basename $0) <username>"
+ exit 1
 fi
 ```
 
@@ -724,12 +716,12 @@ Testing a command does not need the [] brackets. We check the exit status of the
 ```bash
 #!/bin/bash
 if [ "$#" -lt 1 ] ; then
-	echo "usage: $(basename $0) <username>"
-	exit 1
+ echo "usage: $(basename $0) <username>"
+ exit 1
 fi
 if getent passwd "$1" ; then
-	echo "The user $1 already exists on this system"
-	exit 2
+ echo "The user $1 already exists on this system"
+ exit 2
 fi
 ```
 
@@ -760,12 +752,12 @@ ALL Linux Distro: echo "$1:$USER_PASSWORD" | sudo chpasswd
 ```bash
 #!/bin/bash
 if [ "$#" -lt 1 ] ; then
-	echo "usage: $(basename $0) <username>"
-	exit 1
+ echo "usage: $(basename $0) <username>"
+ exit 1
 fi
 if getent passwd "$1" ; then
-	echo "The user $1 already exists on this system"
-	exit 2
+ echo "The user $1 already exists on this system"
+ exit 2
 fi
 read -s -p "Enter a new password for the user - $1: " USER_PASSWORD
 sudo useradd -m "$1"
@@ -782,8 +774,8 @@ Iterating using for loops allow to process lists. Here we have hard coded the li
 ```bash
 for u in joe bob indira
 do
-	echo "Creating user $u"
-	sudo useradd -m "$u"
+ echo "Creating user $u"
+ sudo useradd -m "$u"
 done
 ```
 
@@ -793,12 +785,12 @@ vim script.sh
 #!/bin/bash
 for u in "$*"
 do 
-	echo "User $u"
+ echo "User $u"
 done
 
 for u in "$@"
 do 
-	echo "User $u"
+ echo "User $u"
 done
 
 bash script.sh u1 u2 u3
@@ -816,7 +808,7 @@ It is possible that USER_PASSWORD variable is set to an empty string. Just hitti
 ```bash
 while ! [ -n "$USER_PASSWORD" ]
 do
-	read -s -p "Enter a new password for the user - $1! " USER_PASSWORD
+ read -s -p "Enter a new password for the user - $1! " USER_PASSWORD
 done
 
 # -n: testing for non-zero values
@@ -825,16 +817,16 @@ done
 ```bash
 #!/bin/bash
 if [ "$#" -lt 1 ] ; then
-	echo "usage: $(basename $0) <username>"
-	exit 1
+ echo "usage: $(basename $0) <username>"
+ exit 1
 fi
 if getent passwd "$1" ; then
-	echo "The user $1 already exists on this system"
-	exit 2
+ echo "The user $1 already exists on this system"
+ exit 2
 fi
 while ! [ -n "$USER_PASSWORD" ]
 do
-	read -s -p "Enter a new password for the user - $1! " USER_PASSWORD
+ read -s -p "Enter a new password for the user - $1! " USER_PASSWORD
 done
 sudo useradd -m "$1"
 echo "$USER_PASSWORD" | sudo passwd "$1" --stdin
@@ -852,7 +844,7 @@ echo "$1"
 
 for u in "$@"
 do
-	echo_user "$u"
+ echo_user "$u"
 done
 ```
 
@@ -860,11 +852,11 @@ done
 #!/bin/bash
 create_user() {
 if [ "$#" -lt 1 ] ; then
-	echo "usage: $(basename $0) <username>"
-	exit 1
+ echo "usage: $(basename $0) <username>"
+ exit 1
 elif getent passwd "$1" ; then
-	echo "The user $1 already exists on this system"
-	exit 2
+ echo "The user $1 already exists on this system"
+ exit 2
 fi
 sudo useradd -m "$1"
 getent passwd "$1"
@@ -872,15 +864,15 @@ getent passwd "$1"
 set_password(){
 while ! [ -n "$USER_PASSWORD" ]
 do
-	read -s -p "Enter a new password for the user - $1! " USER_PASSWORD
+ read -s -p "Enter a new password for the user - $1! " USER_PASSWORD
 done
 echo "$USER_PASSWORD" | sudo passwd "$1" --stdin
 }
 
 for u in "$@"
 do
-	create_user "$u"
-	set_password "$u"
+ create_user "$u"
+ set_password "$u"
 done
 ```
 
@@ -894,7 +886,7 @@ need grep (regexp), find, awk, sed part
 
 ### How does this system reboot ?
 
-Shutting Down Using shutdown 
+Shutting Down Using shutdown
 If you are the only one on the system it does not really matter how you shut the system down, so long as it safe. If users are logged onto the system the timing and messaging (wall) option provide more help.
 
 shutdown command :
@@ -914,7 +906,7 @@ sudo shutdown 17:00 "System going down at 5PM"
 sudo shutdown now "System going down now"
 ```
 
-Restricting User Access 
+Restricting User Access
 
 Creating the file /etc/nologin standard users are restricted from logging into the system. Using the shutdown command, standard users are restricted from login when less 5 minutes remain before the event. This is controlled via /run/nologin.
 
@@ -964,7 +956,7 @@ lrwxrwxrwx 1 root root 14 Sep  9 20:47 /usr/sbin/poweroff -> /bin/systemctl
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4f27e7e3-2ae9-4444-8f5a-7771e07694ee/Untitled.png)
 
-1.  **********Access to GRUB Menu:********** During boot time when GRUB loader screen is presented press *e* key. That will open an editor with current kernel boot options.
+1. **********Access to GRUB Menu:********** During boot time when GRUB loader screen is presented press *e* key. That will open an editor with current kernel boot options.
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/efe26761-29e4-4e54-a590-6b1506b106d8/Untitled.png)
 
@@ -976,25 +968,25 @@ lrwxrwxrwx 1 root root 14 Sep  9 20:47 /usr/sbin/poweroff -> /bin/systemctl
 
 (rd.break or rd.break enforcing=0)
 
-1.  ************************************Mount sysroot rw:************************************ Type ***mount -o remount,rw /sysroot***. This actually gets You RW access to the filesystem. ***/sysroot*** folder is Your normal ***/*** hierarchy.
+1. ************************************Mount sysroot rw:************************************ Type ***mount -o remount,rw /sysroot***. This actually gets You RW access to the filesystem. ***/sysroot*** folder is Your normal ***/*** hierarchy.
 
 ```bash
 mount -o remount,rw /sysroot
 ```
 
-1.  **************************************************Change Root Directories:************************************************** Type ***chroot /sysroot*** to make this folder new root directory.
+1. **************************************************Change Root Directories:************************************************** Type ***chroot /sysroot*** to make this folder new root directory.
 
 ```bash
 chroot /sysroot
 ```
 
-1.  **************Reset Root Password:************** Now it is time to change the root password (that is what we are here for right?) - type ***passwd*** and provide new password.
+1. **************Reset Root Password:************** Now it is time to change the root password (that is what we are here for right?) - type ***passwd*** and provide new password.
 
 ```bash
 passwd 
 ```
 
-1.  **************************Autorelabel:************************** Create /.autorelabel which will force a relabel on the next boot (and automatically reboot again to apply the fix):
+1. **************************Autorelabel:************************** Create /.autorelabel which will force a relabel on the next boot (and automatically reboot again to apply the fix):
 
 ```bash
 touch /.autorelabel
@@ -1052,7 +1044,7 @@ Get the current default Linux Kernel file
 sudo grubby --default-kernel
 ```
 
-Get the default Kernel index number 
+Get the default Kernel index number
 
 ```bash
 sudo grubby --default-index
@@ -1092,8 +1084,8 @@ sudo grubby --set-default=<path-of-new-kernel>
 
 Most modern Linux distro use systemd as the system services manager.
 
-Unification 
-The advent of systemd has helped unify Linux flavors so that service management is now the same across Red Hat and Debian based distributions. The main tool we have to manage services is systemctl. 
+Unification
+The advent of systemd has helped unify Linux flavors so that service management is now the same across Red Hat and Debian based distributions. The main tool we have to manage services is systemctl.
 
 ```bash
 ps -fp 1 # systemd
@@ -1154,7 +1146,7 @@ sudo systemctl list-unit-files --type target
 
 In `systemd`, a `unit` refers to any resource that the system knows how to operate on and manage. This is the primary object that the `systemd` tools know how to deal with. These resources are defined using configuration files called unit files.
 
-Type of units 
+Type of units
 
 `Systemd` categories units according to the type of resource they describe. The easiest way to determine the type of a unit is with its type suffix, which is appended to the end of the resource name. The following list describes the types of units available to `systemd`:
 
@@ -1173,14 +1165,14 @@ Type of units
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/49a7bc90-fa2e-4a6d-af0c-8fdbc31c70a3/Untitled.png)
 
-Listing unit content and location 
+Listing unit content and location
 
 ```bash
 systemctl cat atd.service  
 # /usr/lib/systemd/system/atd.service
 ```
 
-Editing unit files 
+Editing unit files
 
 ```bash
 sudo systemctl edit --full atd 
@@ -1188,7 +1180,7 @@ sudo systemctl edit --full atd
 sudo systemctl cat atd | head -n3
 ```
 
-Masking units 
+Masking units
 
 ```bash
 sudo rm /etc/systemd/system/atd.service
@@ -1214,7 +1206,7 @@ sudo systemctl set-defaults graphical.target  # Change default target
 
 ```
 
-With GRUB → add  systemd.unit=rescue.target 
+With GRUB → add  systemd.unit=rescue.target
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b2b9ea4e-28a3-49b5-96fb-20f4394c0ca4/Untitled.png)
 
@@ -1223,8 +1215,6 @@ Then run that command to **immediately stop processes that are not enabled in th
 ```bash
 systemctl isolate multi-user.target 
 ```
-
- 
 
 ## Managing System Performance
 
@@ -1256,11 +1246,9 @@ Core(s) per socket:              4
 - CPU|Core CPU or Core
 - \(s\) The \ is used to remove special meaning from (), we need to search for (s)
 
-  
-
 The system has 8 * 4 core, so 32 CPUs.
 
-8.00 a 25% load 
+8.00 a 25% load
 
 16.00 a 50% load
 
@@ -1303,7 +1291,7 @@ F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 0 S  1000   563     9  0  90  10 -   801 hrtime pts/0    00:00:00 sleep
 ```
 
-Re-adjusting Process priority 
+Re-adjusting Process priority
 
 ```bash
 renice 19 540 
@@ -1314,7 +1302,7 @@ F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 
 ### Understanding Process Status
 
-List all processes 
+List all processes
 
 ```bash
 ps -elf
@@ -1372,7 +1360,7 @@ Installation of the tuned package also presets the profile which should be the
 
 **`balanced`**This is pre-selected in all other cases. The goal is balanced performance and power consumption.
 
-Start and enable the services 
+Start and enable the services
 
 ```bash
 systemctl enable --now tuned 
@@ -1415,16 +1403,16 @@ tuned-adm off
 Troubleshooting :
 
 1. Check with **systemctl status <service>**, is a great first check
-2. Then see **journalctl** 
+2. Then see **journalctl**
 3. If the problem persist check **/var/log/messages**
 
 Looking at a services status:
-The bottom lines of the output include recent log entries which can help with debugging a service error. 
+The bottom lines of the output include recent log entries which can help with debugging a service error.
 
-Using systemd we Have the Journal Log: 
+Using systemd we Have the Journal Log:
 Rather than having to know the log file a services logs to we can simply query the systemd journal using journalctl.
 
-Looking at system and service log: 
+Looking at system and service log:
 The dir /var/log contain many log files. Most messages are logged to /var/log/messages but not all.
 
 ```bash
@@ -1451,8 +1439,6 @@ sudo tail -n1 /var/log/messages
 Feb   4   09:28:46   controller   vagrant[31840]: test message 
 ```
 
- 
-
 ### 📝 Understanding Rsyslogd
 
 The traditional system logging daemon in RHEL and Ubuntu is rsyslogd. The so named Rocket Fast System Logging Daemon. Messages are logged to files based on the facility (service) and priority level. Configuration is in the /etc/rsyslog.conf file, additional .conf files can be added to the /etc/rsylog.d/directory. (default.conf)
@@ -1472,7 +1458,7 @@ man rsyslog.conf
 man 3 syslog
 ```
 
-see more at : https://www.the-art-of-web.com/system/rsyslog-config/
+see more at : <https://www.the-art-of-web.com/system/rsyslog-config/>
 
 ### 📝 Using Log rotate
 
@@ -1492,9 +1478,9 @@ example for file /etc/logrotate.d/rsyslog who describe /var/log/messages :
         compress   # Compress log file 
         delaycompress
         sharedscripts
-				size 100M   # Size at which they rotate 
-				dateext   # adding a date extension to log file
-				copytruncate # When its rotating, copy the contents and truncate it for keep the original file 
+    size 100M   # Size at which they rotate 
+    dateext   # adding a date extension to log file
+    copytruncate # When its rotating, copy the contents and truncate it for keep the original file 
         postrotate
                 /usr/lib/rsyslog/rsyslog-rotate
         endscript
@@ -1509,7 +1495,7 @@ To force the log rotation :
 sudo logrotate /etc/logrotate.conf
 ```
 
-See more for log rotation with : 
+See more for log rotation with :
 
 ```bash
 man logrotate 
@@ -1517,7 +1503,7 @@ man logrotate
 
 ### 📝 Working with the journal log (Journalctl)
 
-Journalctl ships as part of the systemd eco-system and becomes an extremely useful tool with many practical options. 
+Journalctl ships as part of the systemd eco-system and becomes an extremely useful tool with many practical options.
 
 ```bash
 systemctl --type=service # show all running services
@@ -1547,8 +1533,6 @@ sudo systemctl restart systemd-journald
 
 ### 📝 Secure Copy with SCP
 
- 
-
 ```bash
 ssh-keygen 
 
@@ -1563,7 +1547,7 @@ chmod 600  .ssh/authorized_keys
 scp file1 bob@localhost:/home/bob
 ```
 
-ssh authentication key based best practices 
+ssh authentication key based best practices
 
 ```bash
 ssh-keygen -t rsa -b 2048 -C username@domain.tld
@@ -1589,7 +1573,7 @@ ls -l /bin/yum
 /bin/yum -> dnf-3
 ```
 
- **RHEL 8 Content is Distributed via Two Main Repositories** 
+ **RHEL 8 Content is Distributed via Two Main Repositories**
 
 A standard Red Hat 8 system with a support subscription will show two repositories.
 
@@ -1606,24 +1590,22 @@ dnf --version
 **Default Repositories :**
 
 - **Bases OS**
-    
-    Provision of the core set of package required for OS functionality. Packages are all in the form of RPM files.
-    
-- **AppStream**
-    
-    This allows for additional user space application and services. Content is available in one of two formats: RPMs or the extension format called modules.
-    
 
-**Packaging :** 
+    Provision of the core set of package required for OS functionality. Packages are all in the form of RPM files.
+
+- **AppStream**
+
+    This allows for additional user space application and services. Content is available in one of two formats: RPMs or the extension format called modules.
+
+**Packaging :**
 
 - **RPM Format**
-    
+
     The Red Hat Package Manager of RPM format allows for application in standalone package files. The separation of the application or service from the required dependency packages allows for a single version of the application or service to be offered and supported.
-    
+
 - **Module Format**
-    
+
     The AppStream repository allows for modules. An extension to the RPM format grouping applications and services by version with their required dependencies. This extends the offering allowing for multiple versions of an application of service to be offered via the repository. Streams additionally have profiles allowing modular selection of what should be installed.
-    
 
 ### Checking RHEL Subscription
 
@@ -1715,7 +1697,7 @@ sudo dnf update
 sudo dnf history undo 16
 ```
 
-Update on package 
+Update on package
 
 ```bash
 sudo yum upgrade nginx
@@ -1750,7 +1732,7 @@ sudo dnf repolist --all
 
 ************RedHat Installation DVD************
 
-The RedHat installation DVD can be downloaded from RedHat and used without a subscription. The DVD can act as a software repository. We can add a DVD to the storage controller of the VM. 
+The RedHat installation DVD can be downloaded from RedHat and used without a subscription. The DVD can act as a software repository. We can add a DVD to the storage controller of the VM.
 
 ```bash
 sudo mount /dev/cdrom /mnt
@@ -1776,7 +1758,7 @@ sudo yum install zsh
 sudo yum config-manager --enable rhel-8-....-rpms
 ```
 
-************************************HTTP Repo Creation via DVD************************************ 
+************************************HTTP Repo Creation via DVD************************************
 
 Publishing the repo via HTTP could make the resource available to multiple systems so we do note need traverse the internet to install the same software on multiple systems.
 
@@ -1812,9 +1794,9 @@ sudo yum list docker-ce --showduplicates | sort -r
 
 ### Working with Security
 
-****************************************Update and Security**************************************** 
+****************************************Update and Security****************************************
 
-Before updating we can list updates, we can also list just security updates and only install those updates or selected updates. Packages are not tagged in the same way with CentOS so Red Hat must be used for this to work. 
+Before updating we can list updates, we can also list just security updates and only install those updates or selected updates. Packages are not tagged in the same way with CentOS so Red Hat must be used for this to work.
 
 ******************************Update Metadata******************************
 
@@ -1838,17 +1820,17 @@ sudo yum update --sec-severity Important
 
 Module streams allow for more flexibility in installing software and services. Giving you access to more than a single version and pattern to install
 
-Modules : 
+Modules :
 
 - Streams
-    - Streams manage the version of a package
-    - One or more version may be available
-    - There will be a default version, but we can install another version
-    - There are three versions of the ruby stream. The default is 2.5 but we may need version 2.7 which can be explicitly installed
+  - Streams manage the version of a package
+  - One or more version may be available
+  - There will be a default version, but we can install another version
+  - There are three versions of the ruby stream. The default is 2.5 but we may need version 2.7 which can be explicitly installed
 - Profiles
-    - Profiles are part of a stream and control what will be installed
-    - For example, we may only want the database client and not client and server
-    - Selection the correct profiles allows us control over what will be installed
+  - Profiles are part of a stream and control what will be installed
+  - For example, we may only want the database client and not client and server
+  - Selection the correct profiles allows us control over what will be installed
 
 ******Working with Modules******
 
@@ -1951,7 +1933,7 @@ systemctl list-units --type target --state active
 
 ******Changing the Current Target and Setting Default Target******
 
-When the system boots, if no specific target is specified the default target will be met. On servers the default target is the multi-user on desktop it will be graphical. Additional services are needed to run the GUI environment in a desktop setup. 
+When the system boots, if no specific target is specified the default target will be met. On servers the default target is the multi-user on desktop it will be graphical. Additional services are needed to run the GUI environment in a desktop setup.
 
 ```bash
 systemctl get-default  # Get default target
@@ -2041,7 +2023,7 @@ The Kernel module used to access the physical device. The scsi disk module is sd
 
 For example: /dev/sda Having a file to represent the disk, standard I/O can be used to read and write to disk
 
-Listing Block devices 
+Listing Block devices
 
 ```bash
 lsblk # List all block devices in a tree layout 
@@ -2059,9 +2041,9 @@ modinfo <module_name>
 modinfo sd_mod
 ```
 
-The Linux kernel represents character and block devices as pairs of numbers <major>:<minor> 
+The Linux kernel represents character and block devices as pairs of numbers <major>:<minor>
 
-Find out how major number are assigned on a running Linux instance 
+Find out how major number are assigned on a running Linux instance
 
 ```bash
 cat /proc/devices 
@@ -2080,20 +2062,20 @@ MAJ:MIN
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f074403b-1c11-41a5-bdf5-7e5562b3f5d4/Untitled.png)
 
-https://www.ibm.com/docs/en/linux-on-systems?topic=hdaa-names-nodes-numbers
+<https://www.ibm.com/docs/en/linux-on-systems?topic=hdaa-names-nodes-numbers>
 
-Major number identifies Device type (sd, loop, etc) and Minor number identifies Device between them. 
+Major number identifies Device type (sd, loop, etc) and Minor number identifies Device between them.
 
-Generally : 
+Generally :
 
 - sda 8:0
-    - sda1 8:1
-    - sda2 8:2
+  - sda1 8:1
+  - sda2 8:2
 - sdb 8:16
 
 So we have a maximum of 15 partitions per disk a disk goes to 8:1 to 8:15, 8:16 is reserved.
 
-Using the Linux SCSI driver, partitions are limited to a maximum 15 per disk, each dish has pre-assigned address sda=8:0,sdb=8:16,sdc=8:32, to sdo=8:240 sdo15=8:255. 
+Using the Linux SCSI driver, partitions are limited to a maximum 15 per disk, each dish has pre-assigned address sda=8:0,sdb=8:16,sdc=8:32, to sdo=8:240 sdo15=8:255.
 
 Here the sda1 is a separate partition that is used for out boot partition, and that’s where we’re going to find then our kernel and GRUB.
 
@@ -2155,8 +2137,6 @@ Create service unit for persisting Loop Device
 
 ### Creating Disk Files
 
-  
-
 To see in which disk are stored files do :
 
 ```bash
@@ -2184,11 +2164,9 @@ sudo losetup -D #Detach all
 
 ### 📝 Understanding Disk Partitioning
 
-https://developer.ibm.com/tutorials/l-lpic1-102-1/
+<https://developer.ibm.com/tutorials/l-lpic1-102-1/>
 
-Complete disk can be used for filesystems, but breaking the disk into smaller elements may be more practical in some situations. 
-
- 
+Complete disk can be used for filesystems, but breaking the disk into smaller elements may be more practical in some situations.
 
 If the disk where the file system is mounted is filled the system will don’t be able to work correctly, for that we need to partitioning important directory like /boot (contains the Linux kernel and the boot loader (GRUB)),  we have the swap partition, we have /var and /var/log, and he have the /home directory.
 
@@ -2292,24 +2270,24 @@ There are multiple ways to manage partition types:
 - The `fdisk` utility supports the full range of partition types by specifying hexadecimal codes.
 - The `systemd-gpt-auto-generator`, a unit generator utility, uses the partition type to automatically identify and mount devices.
 - The `parted` utility maps out the partition type with *flags*. The `parted` utility handles only certain partition types, for example LVM, swap or RAID.
-    
+
     The `parted` utility supports setting the following flags:
-    
-    - `boot`
-    - `root`
-    - `swap`
-    - `hidden`
-    - `raid`
-    - `lvm`
-    - `lba`
-    - `legacy_boot`
-    - `irst`
-    - `esp`
-    - `palo`
+
+  - `boot`
+  - `root`
+  - `swap`
+  - `hidden`
+  - `raid`
+  - `lvm`
+  - `lba`
+  - `legacy_boot`
+  - `irst`
+  - `esp`
+  - `palo`
 
 ### 📝 Working with Filesystem UUIDs
 
-**Filesystems 
+**Filesystems
 To use the partition, we need to add a filesystem.**
 
 **Device Names are Transitory :** The disk sda may be sda today but if it is not the first disk detected on the next boot it will note be sda, it could be sdb. Filesystems can be optional assigned with a label to identify them, all filesystems have a UUID that uniquely identifies that filesystem.
@@ -2326,7 +2304,7 @@ Mount the FS identified by label
 sudo  mount LABEL=DATA /mnt  
 ```
 
-Show mounted FS by their file system types 
+Show mounted FS by their file system types
 
 ```bash
 mount -t XFS 
@@ -2352,7 +2330,7 @@ sudo mount UUID="<UUID>" /mnt
 
 Automount a FS with /etc/fstab , the filesystem table (Persistent mount)
 
-First unmount the FS to manipulate it 
+First unmount the FS to manipulate it
 
 ```bash
 umount /mnt
@@ -2368,7 +2346,7 @@ sudo mkdir /mnt/data
 sudo mkdir /data
 ```
 
-Edit the fstab file 
+Edit the fstab file
 
 ```bash
 sudo vim /etc/fstab
@@ -2389,7 +2367,7 @@ Verify with the mount command
 mount -t XFS
 ```
 
-Reload the daemon 
+Reload the daemon
 
 ```bash
 sudo systemctl daemon-reload # To update systemd units generated from this file 
@@ -2410,8 +2388,6 @@ The following file system types are supported:
 - `reiserfs`
 
 ### Make loop devices persistent with unit services
-
- 
 
 ```bash
 sudo systemct edit --full --force losetup.service 
@@ -2472,20 +2448,19 @@ sudo parted /dev/loop1
 LVM2 Storage Layers :
 
 - Logical Volumes
-    
+
     Dev-mapper devices which are formatted and presented to the consumer as a block device. (lvs, lvcreate, lvresize)
-    
 
 - Volumes Groups
-    
+
     Volume groups acts as storage pools, aggregating storage together and overcoming the limitations of physical storage size. (vgcreate, vgs, vgdisplay)
-    
+
 - Physical Volumes
-    
+
     Physical storage existing on the host as disks, partitions and raw files. (pvs, pvmove, pvcreate)
-    
+
     ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3171591c-c07c-415e-9423-81f0673d2876/Untitled.png)
-    
+
     ```bash
     sudo pvs  # physical volumes scan from memory 
     
@@ -2499,9 +2474,6 @@ LVM2 Storage Layers :
     sudo lvdisplay # Get more information about logical volume 
     
     ```
-    
-
- 
 
 Thanks to LVM we can dynamically expand our storage space.
 
@@ -2517,7 +2489,7 @@ The default PE size is 4M and affects all physical volumes in a volume group. Th
 sudo vgcreate vg1 -v -s 8m /dev/loop1p2  # Extent vg size
 ```
 
-**************************************************Creating Logical Volumes************************************************** 
+**************************************************Creating Logical Volumes**************************************************
 
 When defining logical volumes we can use -L to specify the desired size that will be adjusted to the nearest value matching multiples of the PE size.
 
@@ -2665,7 +2637,7 @@ swapon -a # made available space swap in /etc/fstab
 
 ## Create and manage local file systems
 
-Managing FS : 
+Managing FS :
 
 - Partition storage
 - Create Mount point
@@ -2745,7 +2717,7 @@ stat -c %a /etc/host
 0644
 ```
 
-Special permissions - The first block of three are the special permissions 
+Special permissions - The first block of three are the special permissions
 
 - 4 : SUID (SetUID) - Used on programs to run as the user owner during execution
 - 2 : SGID (SetGID) - On directories, new files are assigned the group owner from the directory
@@ -2754,7 +2726,7 @@ Special permissions - The first block of three are the special permissions
 [Les droits spéciaux sous GNU/Linux setuid setgid sticky-bit et umask](https://www.linuxaddict.fr/index.php/2018/06/04/les-droits-speciaux-sous-gnu-linux-setuid-setgid-sticky-bit-et-umask/)
 
 Setting Special Directory Permissions
-It is useful to be able to list files with certain permission set and helps us with security audit. For the moment we will become used to setting the permissions and list the top-level directory 
+It is useful to be able to list files with certain permission set and helps us with security audit. For the moment we will become used to setting the permissions and list the top-level directory
 
 ```bash
 mkdir -p ~/perms/dir{1..4} 
@@ -2786,7 +2758,7 @@ find ~/perms/ -type d -perm /o=tw #List dirs where sticky bit set or world writa
 
 ### Managing Linux Groups 📝
 
-Creating Groups 
+Creating Groups
 
 To share our new filesystem, we need to create a group and your standard user account to the group. To pick upon the new group membership you need to re-authenticate.
 
@@ -2801,18 +2773,16 @@ sudo less /etc/group
 ```
 
 > Gid is the primary group of the user. With gpasswd and usermod you can add/remove user from/to group there are two different ways to achieve the same.
-> 
-> 
+>
+>
 > However, you cannot change the user's **primary** group with `gpasswd`. That can be done with `usermod` only. `gpasswd` manages only so called **supplementary** groups. You can view user's primary and supplementary groups with a command: `id -a username`. Sample output:
-> 
+>
 > The group listed as `gid=` is the user's primary group. `groups=` lists all groups the user belongs to (primary group is first, followed by supplementary groups).
-> 
+>
 > There are also some things (not directly related to group membership) that each of those commands can do. With `usermod` you can modify other attributes of the user (like users' default shell or home directory), and with `gpasswd` you can set a group password, that allows users who are **not** members of the group to temporarily join the group if they know the password.
-> 
+>
 
- 
-
-Collaboration Directory Permissions 
+Collaboration Directory Permissions
 Sticky Bit : Users will need the write permissions to the directory to add content. This also means that they can deletes files. Setting the sticky bit on directory allows them to only delete the files they own
 
 SGID Bit : Normally, a new file will be group owned by the user’s current primary group (gid). Where access to others is restricted, perhaps via the umask, it is preferably that all new files in a directory are group owned by the group specified in the directory. The SGID bit makes this happen.
@@ -2867,7 +2837,7 @@ SGID: g+s: On a directory, ensures new files are created with the group ownershi
 
 RHEL 8 uses NFSv4.2 as File Server
 
-New to RHEL 8 is the nfsconf management tool that writes to the new /etc/nfs.conf 
+New to RHEL 8 is the nfsconf management tool that writes to the new /etc/nfs.conf
 
 ### Understanding NFSv4
 
@@ -2943,15 +2913,15 @@ running
 firewall-cmd --list-all # Return the current configuration 
 
 firewall-cmd --add-services=nfs     # Adding the services to the firewall and the 
-																	    # service definitions for NFS will be an XML file 
-																	    # that we're reading 
-																	    # from the firewall backend
+                     # service definitions for NFS will be an XML file 
+                     # that we're reading 
+                     # from the firewall backend
 
 firewall-cmd --runtime-to-permanent # Save the configuration and run it
 success
 ```
 
-****************************************Sharing Directories**************************************** 
+****************************************Sharing Directories****************************************
 
 The NFS server allow us to share filesystems are part thereof. We can define chares in the /etc/exports file or dynamically from the command line with exportsfs. We also have an extension directory where we can add files ending in .exports
 
@@ -2966,7 +2936,7 @@ exportfs -r
 exportfs 
 ```
 
-The entry 192.168.33.* allow all IP between 192.168.33.1 and 192.168.33.254 to access and mount /data/file with option multiple option. Its can be an IP addresses, a Network addresses, a name or all with (*).
+The entry 192.168.33.*allow all IP between 192.168.33.1 and 192.168.33.254 to access and mount /data/file with option multiple option. Its can be an IP addresses, a Network addresses, a name or all with (*).
 
 **ro**
 
@@ -2998,7 +2968,7 @@ cd /mnt
 
 ### Autofs 📝
 
-Automatic Client Mounting 
+Automatic Client Mounting
 If you have a NFS client, you may only need to access the shares periodically. The autofs service can mount these exports automatically for you when needed. Just install the package on the client and run through these steps.
 
 install autofs
@@ -3029,7 +2999,7 @@ SELinux is a MAC system in RHEL and documentation can be installed with sepolicy
 
 SELinux support for NFSv4 continues and there are many customizations that can be made to SELinux policies to better enable NFS in the way you need. The first step is to make sur you have the MAN pages installed.
 
-Install the man page 
+Install the man page
 
 ```bash
 sudo -i
@@ -3046,7 +3016,7 @@ man 8 nfsd_selinux
 
 ```
 
-https://access.redhat.com/documentation/fr-fr/red_hat_enterprise_linux/6/html/storage_administration_guide/ch-nfs
+<https://access.redhat.com/documentation/fr-fr/red_hat_enterprise_linux/6/html/storage_administration_guide/ch-nfs>
 
 ## Implementing Data Optimizations Using VDO 📝
 
@@ -3068,7 +3038,7 @@ sudo dnf install vdo kmod-kvdo
 sudo systemctl enable --now vdo.service
 ```
 
-**Creating VDO Devices** 
+**Creating VDO Devices**
 We create a logical size for the volume as it is this size that is used by the file system without knowledge of the gains from optimization.
 
 ```bash
@@ -3088,8 +3058,8 @@ mkfs.ext4 -E nodiscard /dev/mapper/vdo1
 vdoLogicalSize
 
 - Give l*ogical-size* with the amount of logical storage that the VDO volume should present:
-    - For active VMs or container storage, use logical size that is **ten** times the physical size of your block device. For example, if your block device is 1TB in size, use `10T` here.
-    - For object storage, use logical size that is **three** times the physical size of your block device. For example, if your block device is 1TB in size, use `3T` here.
+  - For active VMs or container storage, use logical size that is **ten** times the physical size of your block device. For example, if your block device is 1TB in size, use `10T` here.
+  - For object storage, use logical size that is **three** times the physical size of your block device. For example, if your block device is 1TB in size, use `3T` here.
 - If the physical block device is larger than 16TiB, add the `-vdoSlabSize=32G` option to increase the slab size on the volume to 32GiB.
 
 ### Mounting VDO Devices
@@ -3121,7 +3091,7 @@ chgrp sales /data/vdo
 ### Managing Volume Size
 
 **Increasing the Logical Size**
-The vdoLogicalSize is the size of the thinly provisioned device presented to the system. Red Hat recommend a 10:1 ratio for filesystems hosting virtual machines and a 3:1 ratio for object stores such as ceph. We can increase but not reduce the logical size. 
+The vdoLogicalSize is the size of the thinly provisioned device presented to the system. Red Hat recommend a 10:1 ratio for filesystems hosting virtual machines and a 3:1 ratio for object stores such as ceph. We can increase but not reduce the logical size.
 
 ```bash
 vdo growLogical --name=vdo1 --vdoLogicalSize=40G
@@ -3135,7 +3105,7 @@ vdo status --name=vdo1 | grep 'Logical size'
 vdostats --human-readable
 ```
 
-**Controlling features** 
+**Controlling features**
 Compression and deduplication can be independently enabled and disabled. Both are enabled by default.
 
 ```bash
@@ -3145,7 +3115,7 @@ vdo enableDeduplication --name=vdo1
 ```
 
 > VDO is great for container or VM storage as so much of your data blocks will be able to make use of data-deduplication
-> 
+>
 
 ## Implementing Layered Storage Using Stratis 📝
 
@@ -3177,9 +3147,9 @@ stratis pool list
 
 ### Creating Filesystems in Stratis
 
-**Managing Stratis File Systems** 
+**Managing Stratis File Systems**
 
-Stratis volumes are thinly provisioned and as such we do not set the size. They are assigned more space than is available. Ensure that mount option in the /etc/fstab file is used to ensure the service is running before the mount is attempted. 
+Stratis volumes are thinly provisioned and as such we do not set the size. They are assigned more space than is available. Ensure that mount option in the /etc/fstab file is used to ensure the service is running before the mount is attempted.
 
 ```bash
 stratis filesystem create pool1 fs1
@@ -3311,7 +3281,7 @@ ip netns exec net1 ip link
     link/ether fe:d8:c6:be:9c:c5 brd ff:ff:ff:ff:ff:ff link-netnsid 0
 ```
 
-To add addresses to veth1 we must run this in the context of the namespace, whereas veth0 is accessible from the default namespace. As the virtual NICS are peers they are linked together as if connected to the same switch; adding addresses on the same network allows network communication. 
+To add addresses to veth1 we must run this in the context of the namespace, whereas veth0 is accessible from the default namespace. As the virtual NICS are peers they are linked together as if connected to the same switch; adding addresses on the same network allows network communication.
 
 ```bash
 ip netns exec net1 ip addr add 10.10.10.2/24 dev veth1 # adding ip address to veth1 in net1
@@ -3399,9 +3369,9 @@ nmcli con mod cafe ipv4.gateway 192.0.2.254 # set / modify default gateway
 
 ### Understanding DNS Priority
 
-**Adding DNS Servers** 
+**Adding DNS Servers**
 
-It is possible that different connections will require different DNS or Gateway settings if not using DHCP. These too, can be part of the configuration. 
+It is possible that different connections will require different DNS or Gateway settings if not using DHCP. These too, can be part of the configuration.
 
 ```bash
 nmcli connection modify cafe ipv4.dns 8.8.8.8 # Add/Changes DNS address
@@ -3443,7 +3413,7 @@ nmcli con up cafe
 cat /etc/resolv.conf # New file generated by Network Manager 
 ```
 
-See more on : https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/configuring-the-order-of-dns-servers_configuring-and-managing-networking
+See more on : <https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/configuring-the-order-of-dns-servers_configuring-and-managing-networking>
 
 ## Configuring Firewalls and Understanding Fail2Ban
 
@@ -3478,8 +3448,8 @@ firewall-cmd --list-all
 firewall-cmd --get-default-zone
 ```
 
-**Permanent and Runtime** 
-The default operations target the runtime configuration, we have persistent storage files to persist settings that we need to continue. The default settings come from /usr/lib/firewalld, edit we make are stored in /etc/firewalld. 
+**Permanent and Runtime**
+The default operations target the runtime configuration, we have persistent storage files to persist settings that we need to continue. The default settings come from /usr/lib/firewalld, edit we make are stored in /etc/firewalld.
 
 ```bash
 firewall-cmd --list-all --permanent 
@@ -3524,7 +3494,7 @@ firewall-cmd --list-ports
 
 ### Sources and Zones
 
-Sources represent inbound connections. We can add a source to zone to trust or block connections. 
+Sources represent inbound connections. We can add a source to zone to trust or block connections.
 
 ```bash
 firewall-cmd --remove-service=http
@@ -3566,9 +3536,9 @@ firewall-cmd --info-service=http  #http is now described by ports: 80/tcp 443/tc
 
 ```
 
-More content on : https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/using-and-configuring-firewalld_configuring-and-managing-networking
+More content on : <https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/using-and-configuring-firewalld_configuring-and-managing-networking>
 
-And : https://docs.rockylinux.org/guides/security/firewalld/?h=firewalld
+And : <https://docs.rockylinux.org/guides/security/firewalld/?h=firewalld>
 
 ### Implementing Automated Firewall
 
@@ -3576,11 +3546,9 @@ And : https://docs.rockylinux.org/guides/security/firewalld/?h=firewalld
 
 Fail2ban is a python based service designed to look for malicious login attempts and block the IP address from host access.
 
- 
-
 **Installing**
-From Red Hat based systems, fail2ban can be installed from the EPEL repository. 
-Adding the EPEL repositories 
+From Red Hat based systems, fail2ban can be installed from the EPEL repository.
+Adding the EPEL repositories
 
 ```bash
 # RHEL version X  
@@ -3630,7 +3598,7 @@ Show fail2ban status for SSHD
 sudo fail2ban-client status sshd
 ```
 
-**Keep the system at the good time and date.** 
+**Keep the system at the good time and date.**
 
 ## Configuring Firewalls Using Nftables
 
@@ -3638,7 +3606,7 @@ sudo fail2ban-client status sshd
 
 Nftables is the default kernel firewall in Red Hat Enterprise Linux 8
 
-We can use firewalld or nftables natively to protect the system from network vulnerabilities 
+We can use firewalld or nftables natively to protect the system from network vulnerabilities
 
 **Nftables is Without Default Tables**
 
@@ -3729,11 +3697,11 @@ The conntrack state may be one of:
 | State | Description |
 | --- | --- |
 | new | Netfilter has so far seen packets between this pair of hosts in only one direction. At least one of these packets is part of a valid initialization sequence, e.g. SYN packet for a TCP connection. |
-| established | Netfilter has seen valid packets travel in both directions between this pair of hosts. For TCP connections, the https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Connection_establishment
+| established | Netfilter has seen valid packets travel in both directions between this pair of hosts. For TCP connections, the <https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Connection_establishment>
  has been successfully completed. |
 | related | This connection was initiated after the main connection, as expected from normal operation of the main connection. A common example is an FTP data channel established at the behest of an FTP control channel. |
 | invalid | Assigned to packets that do not follow the expected behavior of a connection. |
-| untracked | Dummy state assigned to packets that have been explicitly excluded from conntrack. See https://wiki.nftables.org/wiki-nftables/index.php/Setting_packet_connection_tracking_metainformation. |
+| untracked | Dummy state assigned to packets that have been explicitly excluded from conntrack. See <https://wiki.nftables.org/wiki-nftables/index.php/Setting_packet_connection_tracking_metainformation>. |
 
 ### Creating Rules in Nftables
 
@@ -3870,7 +3838,7 @@ sudo useradd -r -M -s /usr/sbin/nologin user1000 #no login, no home dir
 
 ### Modify and Deleting User  📝
 
-****************************************Modify User Accounts**************************************** 
+****************************************Modify User Accounts****************************************
 
 The same options to useradd are available to usermod which is used to modify user accounts.
 
@@ -3911,13 +3879,13 @@ PASS_MIN_DAYS    12
 PASS_WARN_AGE    9
 ```
 
-Password are stored within the second field of the shadow file. The entry itself is broken down 3 separate entities: the algorithm, the SALT and the password hash. 
+Password are stored within the second field of the shadow file. The entry itself is broken down 3 separate entities: the algorithm, the SALT and the password hash.
 
 ### Managing User Passwords
 
 ****************************Changing and Setting Passwords****************************
 
-Commonly, the command passwd is used to set the password. If you use both Debian and RedHat based systems, the chpasswd command is useful for non-interactive password setting. The passwd command is also useful for locking a users account, perhaps while they are on vacation. Use -l to lock, -S to check status and -u to unlock. 
+Commonly, the command passwd is used to set the password. If you use both Debian and RedHat based systems, the chpasswd command is useful for non-interactive password setting. The passwd command is also useful for locking a users account, perhaps while they are on vacation. Use -l to lock, -S to check status and -u to unlock.
 
 ```bash
 echo Password1 | sudo passwd u2 --stdin 
@@ -4017,7 +3985,7 @@ sudo less /etc/sudoers  # file that contains rules and sudo user
 sudo ls /etc/sudoers.d/  # directory available to create sudoers file for user
 ```
 
-**************************Sample Entries (add sudo best practice)** 
+**************************Sample Entries (add sudo best practice)**
 
 ```bash
 tux  192.168.1.20=(root) NOPASSWD: ALL # user tux
@@ -4092,12 +4060,12 @@ Entries can be added to you own config file to reduce the need of options from t
 vim .ssh/config
 
 Host *
-	IdentityFile ~/.ssh/id_rsa
-	ServerAliveInterval 300
-	ServerAliveCountMax 2
+ IdentityFile ~/.ssh/id_rsa
+ ServerAliveInterval 300
+ ServerAliveCountMax 2
 Host remote
-	Hostname 192.168.0.243
-	User tux
+ Hostname 192.168.0.243
+ User tux
 
 chmid 600 /home/vagrant/.ssh/config
 
@@ -4141,7 +4109,7 @@ Access control Lists allow for more than one user or group to have the same or s
 Default mount options:    user_xattr acl    #The FS support ACL 
 ```
 
-Enable ACL to the FS 
+Enable ACL to the FS
 
 ```bash
 sudo  mount -o remount -o acl /dev/sda1
@@ -4155,7 +4123,7 @@ Default ACLs can be applied only to directories. Useful to ensure services can m
 
 **************Setfacl**************
 
-Looking at how we set the ACL in more detail: -m modifies the ACL --d: in the rule specifies the defaults ACL. A user rule must include the username. A rule for others does not contain the username. Here we set no permissions for others. 
+Looking at how we set the ACL in more detail: -m modifies the ACL --d: in the rule specifies the defaults ACL. A user rule must include the username. A rule for others does not contain the username. Here we set no permissions for others.
 
 ```bash
 sudo yum install -y httpd
@@ -4235,13 +4203,13 @@ The command getfacl read the ACL
 getfacl /private
 ```
 
-To view just the default ACL use -d 
+To view just the default ACL use -d
 
 ```bash
 getfacl -d /private
 ```
 
-****************************************Adding and removing**************************************** 
+****************************************Adding and removing****************************************
 
 We can add additional entries if required
 
@@ -4249,13 +4217,13 @@ We can add additional entries if required
 sudo setacl -m u:test:r-x /private
 ```
 
-If that was an error or we simply needed to remove an entry 
+If that was an error or we simply needed to remove an entry
 
 ```bash
 sudo setfacl -x u:tux /private 
 ```
 
-Adding entries for groups is similar to adding users 
+Adding entries for groups is similar to adding users
 
 ```bash
 setfacl -m g:wheel:-rx /private
@@ -4292,7 +4260,7 @@ sudo setfacl --restore=/tmp/acl.txt
 - Has been a part of Red Hat Enterprise Linux since version RHEL 4.
 - Many services run with root access, SELinux controls the access even the root user has to your system.
 
-**********************************************Understanding Security********************************************** 
+**********************************************Understanding Security**********************************************
 
 - File system security needs to be adjusted to allow correct access to directories
 - Firewalls need to be adjusted to control access to the network
@@ -4301,7 +4269,7 @@ sudo setfacl --restore=/tmp/acl.txt
 **************************SELinux Modes**************************
 SELinux has three operating modes:
 
-1. Enforcing: rules are enforced and violations logged 
+1. Enforcing: rules are enforced and violations logged
 2. Permissive: no rules are enforced, violations logged
 3. Disabled: SELinux not operational and no logging
 
@@ -4381,7 +4349,7 @@ auditadm_exec_content          (on   ,   on)  Allow auditadm to exec content
 authlogin_nsswitch_use_ldap    (off  ,  off)  Allow authlogin to nsswitch use ldap
 authlogin_radius               (off  ,  off)  Allow authlogin to radius
 
-																
+                
 sudo setsebool authlogin_radius on 
 
 sudo setsebool authlogin_radius on  -P # Made the change persistent
@@ -4399,7 +4367,7 @@ SELinux Kernel Options (manage it in GRUB during the boot)
 
 ### SELinux Contexts
 
-******************************************SELinux modifications****************************************** 
+******************************************SELinux modifications******************************************
 
 In the main, SELinux works with something called type enforcement. The SELinux type of a source domain or process must be compatible with the target SELinux type. If we need to customize content or if we make erroneous changes operations may not work.
 
@@ -4419,7 +4387,7 @@ unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 96565 pts/0 00:00:00 ps
 
 ### Understanding Tools Used in Changing SELinux context
 
-******************************Breaking and Fixing Authentication****************************** 
+******************************Breaking and Fixing Authentication******************************
 
 Take care that you open two windows with one maintaining root access as the authentication system will be broken before being fixed. Setting the incorrect context on the /etc/shadow file will prevent authentication. Even though the shadow file is accessed with root permissions, access is not granted. The command restorecon will set the correct context for the file.
 
@@ -4432,7 +4400,7 @@ sudo: PAM account management error: Authentication service cannot retrive
 authentication info
 
 tail /var/log/messages
-	
+ 
 restorecon /etc/shadow  # Restore SELinux context of the file  
 Relabeled /etc/shadow from system_u:object_r:user_home_t:s0 to
 system_u:object_r:shadow_t:s0
@@ -4544,7 +4512,7 @@ curl http://localhost:1000/everyday.html
 
 ```
 
-********************************************************************************Debug SELinux and Web Content Issues******************************************************************************** 
+********************************************************************************Debug SELinux and Web Content Issues********************************************************************************
 
 We can use the same tools as before, the man page also holds a perfect example on how to resolve this.
 
@@ -4566,13 +4534,13 @@ sudo restorecon -vR /web # M
 ### Note
 
 > With both `semanage` and `chcon` commands, we can change the SELinux context of a file, process, or directory. But there is a significant difference between both. The changes made with `chcon` are temporary in nature whereas with `semanage` it is permanent. The context of the file altered with chcon goes back to default with the execution of the restorecon command. `restorecon` relabels the file system and restores the selinux context set   by `semanage` . This makes changes made by `semanage fcontext` persistent. Therefore it is not advisable to use the `chcon` to change the SELinux context.
-> 
+>
 
 # 📝 Getting Started with Podman
 
 ## Understanding Podman
 
-**Linux: All About Containers** 
+**Linux: All About Containers**
 
 - Control Groups: Control groups isolate processes within a group limiting resources they can access.
 - SELinux: Security Enhanced Linux restricts access to resources based on the process accessing the resource.
@@ -4594,7 +4562,7 @@ sudo restorecon -vR /web # M
 
 ### What is Rootless Mode ?
 
-****************************************Rootless Containers**************************************** 
+****************************************Rootless Containers****************************************
 
 Being able to create and execute containers without the need of elevated privileges is a major improvement in Podman over Docker.
 
@@ -4688,7 +4656,7 @@ podman ps -a
 
 We can use the inspect sub-command to learn information about the image. We can see that the web server will listen on port 8080 for HTTP traffic which is sufficient for testing.
 
-We can map an available port on the podman host to the container port. 
+We can map an available port on the podman host to the container port.
 
 ```bash
 podman inspect registry.access.redhat.com/rhscl/httpd-24-rhel7 | grep expose
@@ -4778,7 +4746,7 @@ sudo firewall-cmd --add-port 37813/tcp
 sudo firewall-cmd --reload
 ```
 
-**********************************Execute Commands********************************** 
+**********************************Execute Commands**********************************
 
 Using the exec subcommand we can run commands in an interactive TTY. This could be used to put a simple web page for testing onto the system.
 
@@ -4827,7 +4795,7 @@ podman pull rhscl/mysql-57-rhel7
 podman inspect rhscl/mysql-57-rhel7 | grep usage
 ```
 
-************Deploy Test Container************ 
+************Deploy Test Container************
 
 As a quick test we can deploy a container and test the connectivity from the client system. If you don’t have that, install the mysql package that adds the client to the podman host.
 
@@ -4848,7 +4816,7 @@ mysql -u user -p -h <ip_mysql_server> # Connect to the mysql server on the conta
 
 **********************************Inside Containers**********************************
 
-Connecting to the container we can see that we connect as UID 27, mysql. It is this UID that is used by PID 1 for the MySQL database server and it is this account that we need to assign ownership of any volume that needs to be writable. 
+Connecting to the container we can see that we connect as UID 27, mysql. It is this UID that is used by PID 1 for the MySQL database server and it is this account that we need to assign ownership of any volume that needs to be writable.
 
 ```bash
 podman exec -it sql /bin/bash
@@ -4859,7 +4827,7 @@ uid=27(mysql) gid=27(mysql) groups=27(mysql),0(root)
 ps -p1 -f
 ```
 
-**************************************Assigning Ownership ( Prerequisite for writable volume)************************************** 
+**************************************Assigning Ownership ( Prerequisite for writable volume)**************************************
 
 Ordinary users cannot assign new owners to a directory. As root, it may also fail if the UID or GID are not on the podman system. We need to use podman unshare to work in our own namespace. To the host UID 27 become 100026 as the first account used by tux is 100000 from the /etc/subuid file.
 
@@ -4894,6 +4862,6 @@ ls /home/tux/mysql
 
 # More content
 
-**Performance tuning guide** : https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/performance_tuning_guide/index
+**Performance tuning guide** : <https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/performance_tuning_guide/index>
 
-**Enabling EPEL (Extra Packages for Enterprise Linux) :** https://docs.fedoraproject.org/en-US/epel/
+**Enabling EPEL (Extra Packages for Enterprise Linux) :** <https://docs.fedoraproject.org/en-US/epel/>

@@ -23,8 +23,6 @@ apropos cmd
 
 When you run a terminal a new shell session is created for you using the defaults settings in a hidden file called ***.bashsrc*** there is define terminal color, history file size, etc.
 
- 
-
 ### Linux Command Syntax Patterns and Shortcuts
 
 Command Syntax that are possible:
@@ -33,9 +31,7 @@ Command Syntax that are possible:
 cmd [options] <arguments>
 ```
 
- 
-
-Shortcut 
+Shortcut
 
 - `tab` - autocompletion
 - `cd` - change directory to home directory
@@ -52,9 +48,7 @@ cat .bash_history
 
 ### Working with Files and Directories
 
-Create a script directories for your user in the home directory. 
-
- 
+Create a script directories for your user in the home directory.
 
 ```bash
 cd             # Change directory
@@ -67,7 +61,7 @@ mv <src> <dst> # Move file
 rmdir <dir>    # Remove a directory 
 ```
 
-Linux concept = File, all are a file 
+Linux concept = File, all are a file
 
 Since UNIX V6 there was a program ***/etc/glob*** that would expand wildcard patterns. Soon afterward this became a shell built-in.
 
@@ -106,11 +100,11 @@ awk
 sed 
 ```
 
-|     combine 
+|     combine
 
 >> append
 
->   overwrite 
+> overwrite
 
 When you run a command there is 3 standard streams :
 
@@ -127,8 +121,6 @@ wget google.cooom 2> errorfile.txt
 ```
 
 ### Working with Archives
-
- 
 
 The common tools to archives a file is tar (tape archive), and the commons tools to compress a file is gzip.
 
@@ -148,15 +140,11 @@ lspci
 lshw 
 ```
 
- 
-
 The Linux Kernel modules are pieces of code that can be loaded and unloaded into the kernel upon demand. They increase the Kernel functionality within reboot the system.
 
 The software files that make up kernel modules are usually kept in the ***lib/modules*** directory.
 
 The things is though that the module you’ll want to use will depend on the Linux Kernel version you’re running.
-
- 
 
 ```bash
 uname -r # Return the kernel version
@@ -240,7 +228,7 @@ SSH stand for secure shell, its a protocol that natively listen to the port TCP 
 
 This protocol allows people to access remotely and virtually servers, in a secure way.
 
-Remote is the new local : 
+Remote is the new local :
 
 - Accessing headless servers
 - Accessing virtual machines
@@ -283,7 +271,7 @@ scp update-local.sh user@10.39.249.250:/home/user
 
 ### Linux Scripting
 
-The first line of every script has to tell Linux that’s it’s an executable scripts and which shell interpreter we’re going to use. 
+The first line of every script has to tell Linux that’s it’s an executable scripts and which shell interpreter we’re going to use.
 
  Shebang line :
 
@@ -297,7 +285,7 @@ Declare a variable :
 declare -i number1  # Declare an integer variable
 ```
 
-Assign value to a variable 
+Assign value to a variable
 
 ```bash
 declare -i int_value
@@ -329,25 +317,25 @@ Create a loop :
 
 ```bash
 for i in {0..10..2}  # 0 to 10, 2 by 2
-	do 
-		//instruction with or not with $i
-	done
+ do 
+  //instruction with or not with $i
+ done
 ```
 
 ```bash
 for filename in file1 file2 file3
-	do
-		echo "Important stuff" >> $filename
-	done
+ do
+  echo "Important stuff" >> $filename
+ done
 ```
 
-If conditions : 
+If conditions :
 
 ```bash
 if test $text1 != $text2; then      # Test string 
-	echo "I guess opposites attract."
+ echo "I guess opposites attract."
 else 
-	echo "You two do think alike!"
+ echo "You two do think alike!"
 fi
 exit 0
 ```
@@ -358,8 +346,8 @@ Create a while loop:
 declare -i counter
 counter=10
 while [ $counter -gt 2 ];do #GT = Greather Than 
-	echo $counter
-	counter=counter-1 
+ echo $counter
+ counter=counter-1 
 done 
 ```
 
@@ -367,14 +355,14 @@ Create a case statement :
 
 ```bash
 case $weather in
-	sunny | warm ) echo $weather
-	;;
-	cloudy | cool ) echo $weather
-	;;
-	rainy | cold ) echo $weather
-	;;
-	* ) echo $weather
-	;;
+ sunny | warm ) echo $weather
+ ;;
+ cloudy | cool ) echo $weather
+ ;;
+ rainy | cold ) echo $weather
+ ;;
+ * ) echo $weather
+ ;;
 esac 
 ```
 

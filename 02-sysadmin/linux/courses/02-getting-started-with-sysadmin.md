@@ -21,7 +21,7 @@ See the capacity and specification of the CPU cores in system.
 less /proc/cpuinfo
 ```
 
-See the uptime of the system 
+See the uptime of the system
 
 ```bash
 uptime 
@@ -114,18 +114,18 @@ Use top command for this the nice value . The columns NI is the priorities of pr
 
 ## Working with users and groups in Linux
 
-Admin powers : best practices 
+Admin powers : best practices
 
 - Avoid using the root account
 - Create unique accounts for each user
 - Assign only necessary authority to each user
 - Use admin power only via sudo
 
-/etc/passwd→ User information 
+/etc/passwd→ User information
 
-/etc/group → Group information 
+/etc/group → Group information
 
-/etc/shadow → User password 
+/etc/shadow → User password
 
 ```bash
 id user # Return user and group ids 
@@ -170,34 +170,34 @@ drwxr-x--- 4 kportron kportron 4096 Nov 17 13:25 .
 ```
 
 ```
-473		d rwx r-x ---                          4 kportron kportron 4096 Nov 17 13:25 .   
- | 		| ||| ||| |||_ other / execute right   |     |        |      |       |       |__ Name
- |		| ||| ||| ||__ other / write right     |     |        |      |       |__________ Date of last update 
- |		| ||| ||| |___ other / read right      |     |        |      |__________________ Size 
- |		| ||| |||_____ group / execute right   |     |        |_________________________ group owner
- |		| ||| ||______ group / write right     |     |__________________________________ owner
- |		| ||| |_______ group / read right      |________________________________________ Number of links 
- |		| |||_________ owner / execute right 
- |		| ||__________ owner / write right 
- |		| |___________ owner / read right
- |		| ____________ file type 
+473  d rwx r-x ---                          4 kportron kportron 4096 Nov 17 13:25 .   
+ |   | ||| ||| |||_ other / execute right   |     |        |      |       |       |__ Name
+ |  | ||| ||| ||__ other / write right     |     |        |      |       |__________ Date of last update 
+ |  | ||| ||| |___ other / read right      |     |        |      |__________________ Size 
+ |  | ||| |||_____ group / execute right   |     |        |_________________________ group owner
+ |  | ||| ||______ group / write right     |     |__________________________________ owner
+ |  | ||| |_______ group / read right      |________________________________________ Number of links 
+ |  | |||_________ owner / execute right 
+ |  | ||__________ owner / write right 
+ |  | |___________ owner / read right
+ |  | ____________ file type 
  |__________________ inode number 
 
 ```
 
-Directories 
+Directories
 
 - Read right : Read what contains the directory
 - Write right : Create object in the directory
 - Execute right : Move in the directory
 
-File 
+File
 
 - Read right : Read the file
 - Write right : Modify the file
 - Execute right : Execute the file (script/command)
 
-Sticky-bit 
+Sticky-bit
 
 One of the peculiarities of rights in Linux is that the right to write to a directory also allows deletion of *all* files, owner or not.
 
@@ -214,7 +214,7 @@ ls -l
 drwxrwxrw**t** … directory 
 ```
 
-Link files 
+Link files
 
 These files give the possibility to give several logical names to the same physical file. A new access point to the file is therefore created.
 
@@ -246,7 +246,7 @@ ls –li /home/*/*
 666 –rwxr--r-- 2 root root … read
 ```
 
-!https://docs.rockylinux.org/books/admin_guide/images/07-file-systems-009.png
+!<https://docs.rockylinux.org/books/admin_guide/images/07-file-systems-009.png>
 
 ### **SYMBOLIC LINK**
 
@@ -273,11 +273,11 @@ The command `ln` with the argument `-s` allows to create symbolic links.
 678 lrwxrwxrwx 1 root root … read -> letter
 ```
 
-!https://docs.rockylinux.org/books/admin_guide/images/07-file-systems-010.png
+!<https://docs.rockylinux.org/books/admin_guide/images/07-file-systems-010.png>
 
 ### Hardening Your Server
 
-Keep up with tech news sources to be warn when a vulnerability appears. 
+Keep up with tech news sources to be warn when a vulnerability appears.
 
 **Software updates :**
 
@@ -323,20 +323,20 @@ Email Server elements :
 Linux In a container World :
 
 - Host administration
-    - Privileges
-    - Kernel Access
+  - Privileges
+  - Kernel Access
 - Container administration
-    - Application design
+  - Application design
 - The future of Linux
-    - Microservices
-    - DevOps
-    - Development support
+  - Microservices
+  - DevOps
+  - Development support
 
 ### Understanding the Docker Ecosystem
 
 The core piece of the Docker puzzle is the image, which is an archive of the software stack that will be run as a virtual OS, along with any application code it’ll use. You can download pre-built images from online repositories Docker Hub, or create your own.
 
-One way to define or customize your own images is by writing a Dockerfile, which is a simple text script that declare the components and configuration environment you want for your image. 
+One way to define or customize your own images is by writing a Dockerfile, which is a simple text script that declare the components and configuration environment you want for your image.
 
 ```docker
 # Create a webserver on Ubuntu
@@ -354,7 +354,7 @@ EXPOSE 80
 **Image hosting :**
 
 - Docker Hub
-- Docker Registry (LAN) https://docs.docker.com/registry/
+- Docker Registry (LAN) <https://docs.docker.com/registry/>
 
 **Storage :**
 
@@ -368,7 +368,7 @@ docker network create newnet
 
 ### Installing Docker Engine on Linux
 
-ubuntu install 
+ubuntu install
 
 ```bash
 # Setup the repository 
@@ -436,13 +436,13 @@ When you install a package use the option -y for the apt-get.
 
 EXPOSE 80, listen port 80 in the container.
 
-Build the images : 
+Build the images :
 
 ```bash
 docker build -t "webeserver" . 
 ```
 
--t  : tag 
+-t  : tag
 
  .   : to look for a docker file in the current directory
 
@@ -455,16 +455,16 @@ docker images
 To run a container with the custom images :
 
 ```bash
-	docker run -d -p 80:80 webser /usr/sbin/apache2ctl -D FOREGROUND 
+ docker run -d -p 80:80 webser /usr/sbin/apache2ctl -D FOREGROUND 
 ```
 
--d : run in background 
+-d : run in background
 
 -p : permit incoming traffic from the host network on port 80, and through port 80 to the container
 
 /usr/sbin/apache2ctl -D FOREGROUND : ensure that Apache actually load when the container start up
 
-Use docker hub via cli 
+Use docker hub via cli
 
 ```bash
 docker login

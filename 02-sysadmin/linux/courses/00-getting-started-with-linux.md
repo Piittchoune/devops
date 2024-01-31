@@ -3,7 +3,7 @@
 ### Open Source Licensing Models
 
 - Free Software Foundation
-    - GPL (Linux Kernel)
+  - GPL (Linux Kernel)
 - Open Source Initiative (OSI)
 - Creative Commons
 - BSD
@@ -40,14 +40,14 @@ The layers of a Linux Distribution :
 Because Linux is free, people and community decide to create their own Linux based Operating System.
 
 - Debian
-    - Ubuntu, Mint
+  - Ubuntu, Mint
 - Red Hat Enterprise Linux
-    - CentOS, Fedora, Rocky Linux
+  - CentOS, Fedora, Rocky Linux
 - SUSE
-    - OpenSUSE
+  - OpenSUSE
 - Arch Linux
 
-LTS stand for Long-Term Support is a releases of a Linux Distributions that are built to be as stable a possible using only fully tested software and configurations. The reliability of such configurations makes it possible for the distro managers to continue to provide security and features updates to a release for as long as 5 years. 
+LTS stand for Long-Term Support is a releases of a Linux Distributions that are built to be as stable a possible using only fully tested software and configurations. The reliability of such configurations makes it possible for the distro managers to continue to provide security and features updates to a release for as long as 5 years.
 
 ## Installing Linux
 
@@ -61,7 +61,7 @@ LVM (Logical Volume Manager)
 
 ### Installing Scripted Instances
 
-Build Images with Docker Compose and run it with the Docker Engine 
+Build Images with Docker Compose and run it with the Docker Engine
 
 Use Web services like Azure / GWS / AWS to run Linux Instances in cloud
 
@@ -73,11 +73,11 @@ Use Web services like Azure / GWS / AWS to run Linux Instances in cloud
 
 1. BIOS / UEFI → Firmware in the mother board (ROM)
 2. MBR / GPT → Looking for a disk devices on boot and mount it
-3. GRUB → If that storage has Linux installed, bootloader script called GRUB is executed 
+3. GRUB → If that storage has Linux installed, bootloader script called GRUB is executed
 4. Linux Kernel → Load the OS kernel into the RAM
 5. init (SysVInit) or  Systemd → pid=1 that executes config file targets (run levels)
-6. Display manager loaded 
-7. If run levels 5 then load desktop 
+6. Display manager loaded
+7. If run levels 5 then load desktop
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ac849fd3-9e50-4064-aa26-d49c95266ac0/Untitled.png)
 
@@ -86,9 +86,9 @@ See /etc/grub.d for more details, once finish run ***********sudo update-grub**.
 
 — Linux Runlevels :
 
-Runlevels are just codes used to tell Linux how the OS should be running 
+Runlevels are just codes used to tell Linux how the OS should be running
 
-Linux is a multi-user systems 
+Linux is a multi-user systems
 
 SysVInit is currently redirected to the new systemd version
 
@@ -109,7 +109,7 @@ sudo systemctl enable multi-user.target # same as isolate
 
 Linux = Directory, Windows = Folder
 
-Root directory is  / 
+Root directory is  /
 
 Root-level directories
 
@@ -136,7 +136,7 @@ For example ***/sys/block/sda/*** contains all information about the hard drive 
 
 For security reasons admins normally won’t log in a Linux system as the root user.
 
-WSL = bash for use and manage windows 
+WSL = bash for use and manage windows
 
 ### Managing Linux Environments
 
@@ -148,7 +148,7 @@ localectl set-locale LANG=fr_FR.utf8  # Set up french language
 loadkeys fr                           # Set up french keyboard
 ```
 
-In ***/usr/share/i18n/locales*** are stocked all information about all languages and keyboard layout for the Linux environments. Change it with the command ***********localectl*********.** 
+In ***/usr/share/i18n/locales*** are stocked all information about all languages and keyboard layout for the Linux environments. Change it with the command ***********localectl*********.**
 
 However you can use the command timedatectl instead :
 
@@ -192,7 +192,7 @@ env | less    #return all environment variables
 set | less   #return environment variables and shell functions that you can use
 ```
 
-Set and unset an environment variables 
+Set and unset an environment variables
 
 ```bash
 export EX="example"   #set an environment variables 
@@ -209,7 +209,7 @@ echo 'export EX="example"' >> ~/.bash_profile
 source ./bash_profile
 ```
 
-Adding a path to the Linux path variable 
+Adding a path to the Linux path variable
 
 ```bash
 echo $PATH #return the content of the variable 
@@ -262,7 +262,7 @@ vim: /usr/bin/vim /usr/bin/vim.tiny /usr/bin/vim.basic /etc/vim /usr/share/vim /
 
 The motherboard contains the slots and connectors to which your components will be installed and the circuitry and data busses that transport data and electricity between them.  
 
-Take time to choose the good component or resources to your Linux System (CPU, RAM, Disk Space, Disk Speed, RAID, Partitioning, Network configuration) according to your project. 
+Take time to choose the good component or resources to your Linux System (CPU, RAM, Disk Space, Disk Speed, RAID, Partitioning, Network configuration) according to your project.
 
 Display all the block devices currently mounted on your system
 
@@ -278,7 +278,7 @@ df --help
 
 ```
 
-We can see that our hard disk is formatted in ext4, it have 251 GB of space and it mounted on the root directory. 
+We can see that our hard disk is formatted in ext4, it have 251 GB of space and it mounted on the root directory.
 
 ***/dev/sdb*** its the virtual addresses for disk drives
 
@@ -287,8 +287,6 @@ We can see that our hard disk is formatted in ext4, it have 251 GB of space and 
 So all devices, including DVD, USB drives and modems are represented by a file in the /dev directory.
 
 If a drive doesn’t appear in the output of ***df*** it might simply not mounted. With ***lsblk*** you can list all of the block devices attached to your system.
-
-  
 
 ```bash
 lsblk
@@ -313,8 +311,6 @@ Filesystem     Type  Size  Used Avail Use% Mounted on
 
 Another important tool for discovering all the bits and pieces you’ve got attached to your system is ***dmesg***. It will display messages relating to the kernel ring buffer, which, in practical terms, can tell you a lot about how the system understands its physical environment.
 
- 
-
 ```bash
 dmesg 
 [    2.829317] sd 0:0:0:1: [sdb] Attached SCSI disk
@@ -329,7 +325,7 @@ dmesg
 [   49.187298] hv_balloon: Max. dynamic memory size: 12850 MB
 ```
 
-Use ***grep*** for more power full search in the kernel buffer. There is also some option to the ***dmesg*** command 
+Use ***grep*** for more power full search in the kernel buffer. There is also some option to the ***dmesg*** command
 
 ```bash
 dmesg -T                   #Human-readable timestamp 
@@ -342,10 +338,6 @@ List all information about your system hardware with the command ***lshw*** :
 ```bash
 sudo lshw | less  
 ```
-
- 
-
- 
 
 ## Configuring the Linux Desktop Experience
 
@@ -368,19 +360,17 @@ apt.conf.d  auth.conf.d  preferences.d  sources.list  sources.list.d  trusted.gp
 
 The ***source.list*** file contains all the repository information the app system will need to faithfully do its job.  
 
-**Explanation of the software repository format** 
+**Explanation of the software repository format**
 
 - **deb**: These repositories contain binaries or precompiled packages. These repositories are required for most users.
 - **deb-src**: These repositories contain the source code of the packages. Useful for developers.
-- **http://archive.ubuntu.com/ubuntu**: The URI (Uniform Resource Identifier), in this case a location on the internet. See the [official mirror list](https://launchpad.net/ubuntu/+archivemirrors) or the self-maintained [mirror list](https://wiki.ubuntu.com/Archive) to find other mirrors. (or see the official website of your distro)
+- **<http://archive.ubuntu.com/ubuntu>**: The URI (Uniform Resource Identifier), in this case a location on the internet. See the [official mirror list](https://launchpad.net/ubuntu/+archivemirrors) or the self-maintained [mirror list](https://wiki.ubuntu.com/Archive) to find other mirrors. (or see the official website of your distro)
 - **focal** is the release name or version of your distribution.
 - **main** & **restricted** are the section names or [components](https://help.ubuntu.com/community/Repositories/CommandLine#what). There can be several section names, separated by spaces. Packages. The four main repositories are:
-    - **Main** - Distro dev team (Debian Project  / Canonical / etc) supported free and open-source software.
-    - **Universe** - Community-maintained free and open-source software.
-    - **Restricted** - Proprietary drivers for devices.
-    - **Multiverse** - Software restricted by copyright or legal issues.
-
- 
+  - **Main** - Distro dev team (Debian Project  / Canonical / etc) supported free and open-source software.
+  - **Universe** - Community-maintained free and open-source software.
+  - **Restricted** - Proprietary drivers for devices.
+  - **Multiverse** - Software restricted by copyright or legal issues.
 
 Example of ***source.list*** file in Ubuntu Focal version :
 
@@ -399,8 +389,6 @@ deb http://security.ubuntu.com/ubuntu/ focal-security multiverse
 ```
 
 Third-party repositories are added to files in the ***sources.list.d*** directory.
-
- 
 
  Return the total of available package in main, universe, restricted and multiverse repository :
 
@@ -510,8 +498,6 @@ yum install nginx
 - Cinnamon/Mate
 - Gnome
 - Xfce
-    
-    
 
 ## Working with the Linux Server
 
@@ -531,17 +517,17 @@ With LXD you can create easily a Linux Lab. LXD is an evolve version of LXC.
 
 1.
 
-https://linuxcontainers.org/lxd/docs/latest/installing/
+<https://linuxcontainers.org/lxd/docs/latest/installing/>
 
 Windows Install :
 
-https://chocolatey.org/install#individual
+<https://chocolatey.org/install#individual>
 
-https://community.chocolatey.org/packages/lxc
+<https://community.chocolatey.org/packages/lxc>
 
 Linux Install
 
-https://ubuntu.com/server/docs/containers-lxc
+<https://ubuntu.com/server/docs/containers-lxc>
 
 ```bash
 sudo apt install lxc
@@ -562,7 +548,7 @@ To enable SSH, run: apt install openssh-server
 No default root or user password are set by LXC.
 ```
 
-https://ubuntu.com/server/docs/containers-lxd
+<https://ubuntu.com/server/docs/containers-lxd>
 
 ```bash
 sudo lxc launch images:centos/7/amd64 centos7
@@ -582,7 +568,7 @@ curl http://<ip_address>
 
 ### Installing and Working with Server Apps : Nextcloud
 
-Snaps are a relatively new class of package manager that were designed simplify software installation and administration by providing a highly predictable and standardized infrastructure, but it’s also about enhancing server security. In a way its a kind of virtual partition that exists within your file system inside its own isolated environment. 
+Snaps are a relatively new class of package manager that were designed simplify software installation and administration by providing a highly predictable and standardized infrastructure, but it’s also about enhancing server security. In a way its a kind of virtual partition that exists within your file system inside its own isolated environment.
 
 ```bash
 snap install nextcloud 
@@ -605,7 +591,7 @@ Risks of compiling code instead of use package manager :
 - Dependencies broken by system updates
 - Unreliable source codes rep
 
-Install from code sources 
+Install from code sources
 
 ```bash
 sudo apt install build-essential # install dependencies for compiling code 

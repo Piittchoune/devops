@@ -12,7 +12,7 @@
 
 - Very easy to use thanks to SSH and YAML
 - Easy integration with CI/CD tools
-- Serveral  odule and a huge community
+- Serveral module and a huge community
 - inventory > playbook < roles
 - Ansible tools:
 

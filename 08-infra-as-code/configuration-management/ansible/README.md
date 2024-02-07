@@ -74,3 +74,8 @@ Other Ansible fundamentals:
 - **Templates**: Ansible can use Jinja2 templates to dynamically generate configuration files based on variables. This is useful for customizing configuration files with host-specific information.
 
 - **Fact Gathering**: Ansible can gather facts about remote hosts, such as hardware details, operating system information, and network configuration. These facts can be used in playbooks to make tasks more adaptable.
+
+## Sources
+
+- [xavki](<https://www.youtube.com/@xavki>)
+- [stephane-robert-devops](<https://blog.stephane-robert.info>)

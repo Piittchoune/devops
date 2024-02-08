@@ -4255,6 +4255,8 @@ sudo setfacl --restore=/tmp/acl.txt
 
 **************SELinux**************
 
+[Selinux labs](http://redhatgov.io/workshops/security_containers/exercise1.8/)
+
 - SELinux is a MAC, Mandatory Access Control, security system originally developed by the National Security Agency.
 - Much of the Kernel module development has been run by both the NSA and Red Hat.
 - Has been a part of Red Hat Enterprise Linux since version RHEL 4.

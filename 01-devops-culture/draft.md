@@ -37,3 +37,16 @@
 
 <https://blog.stephane-robert.info/>
 <https://twitter.com/bearstech>
+
+## More Linux content
+- gpg keys for dnf repo
+- dnf automatic
+- /etc/default/grub conf
+- sssd sssctl autofs realm/adcli krb5
+- /etc/profile.d
+- version lock
+- import certificate
+- create a systemd services
+- printer on linux
+- gnome configuration /etc/dconf
+- oscap security on linux

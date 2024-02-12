@@ -4538,7 +4538,7 @@ sudo restorecon -vR /web # M
 > With both `semanage` and `chcon` commands, we can change the SELinux context of a file, process, or directory. But there is a significant difference between both. The changes made with `chcon` are temporary in nature whereas with `semanage` it is permanent. The context of the file altered with chcon goes back to default with the execution of the restorecon command. `restorecon` relabels the file system and restores the selinux context set   by `semanage` . This makes changes made by `semanage fcontext` persistent. Therefore it is not advisable to use the `chcon` to change the SELinux context.
 >
 
-# 📝 Getting Started with Podman
+# 📝 RHEL 8: Getting Started with Podman
 
 ## Understanding Podman
 

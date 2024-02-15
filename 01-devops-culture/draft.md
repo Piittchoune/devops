@@ -5,6 +5,7 @@
 ### Intersting link to used
 
 - [Awesome tools](https://github.com/kahun/awesome-sysadmin)
+- [Awesome Devops](https://github.com/wmariuss/awesome-devops)
 - [Nginx Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/)
 - [Writing kernel module](https://github.com/sysprog21/lkmpg)
 - [Linux from scratch](https://fr.linuxfromscratch.org/)

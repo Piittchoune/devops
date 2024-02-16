@@ -51,3 +51,27 @@
 - printer on linux
 - gnome configuration /etc/dconf
 - oscap security on linux
+
+## Devops roadmap
+- Go and python
+- Git
+- Reverse proxy / Forward proxy / Web servers / Firewall / Load Balancer / Caching Servers
+- Podman
+- AWS / OVH
+- FTP / HTTP / SSL / TLS / SSH / DNS / NTP / ...
+- OSI MODEL
+- MAIL / SMTP / IMAPS / POP3 / GPG / DMARC / SPF / DOMAIN KEYTS / white list
+- Terraform / opentofu / Pulumi
+- Ansible / puppet
+- Gitlab CI / Github actions/ circle CI / drone
+- hashicrop vault / SOPS
+- Grafana / zabbix / Prometheus
+- OpenTelemetry
+- teleport bastion
+- Loki / elastic stack
+- Kubernetes
+- Artifactory
+- ArgoCS
+- Istio / consul
+- cloud design patterns => Availability / Data Management / Design and implementation / Management and monitoring
+<https://roadmap.sh/devops>

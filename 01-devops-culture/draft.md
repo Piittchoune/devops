@@ -32,7 +32,8 @@
 - [crowdsec](https://www.crowdsec.net/)
 
 
-
+### Learn programming
+<https://www.boot.dev/>
 
 ### Actor of devops
 
